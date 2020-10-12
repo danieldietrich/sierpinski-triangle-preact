@@ -1,6 +1,9 @@
-import { h } from 'preact';
+import { h, options } from 'preact';
 import { useEffect, useLayoutEffect, useRef, useState } from 'preact/hooks';
 import './styles.css';
+
+// see https://twitter.com/_developit/status/1315431217836294144
+options.debounceRendering = requestAnimationFrame
 
 // custom hook that provides { width, height } of the window
 const useWindowSize = () => {
