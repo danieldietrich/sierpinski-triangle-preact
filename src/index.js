@@ -79,7 +79,7 @@ const SierpinskiTriangle = () => {
   // Animation loop by deferring state changes (here: setFactor), which perform a new component render.
   // Internally, each render is done on the browsers animation frame (requestAnimationFrame()), which runs every 16 ms (= 60 fps)
   useLayoutEffect(() => {
-    schedule(() => requestAnimationFrame(() => {
+    schedule(() => {
       const { current } = stats
       const now = Date.now()
       current.renders++
@@ -90,7 +90,7 @@ const SierpinskiTriangle = () => {
       }
       const nextFactor = ease((now / speed) % 100 / 100)
       setFactor(prevFactor => (prevFactor === nextFactor) ? nextFactor + 1e-9 : nextFactor) // prevent animation stop
-    }))
+    })
   }, [factor]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
